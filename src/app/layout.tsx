@@ -14,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`h-dvh overflow-y-scroll w-full antialiased`}>
+      <body
+        className={`relative h-dvh overflow-y-scroll w-full antialiased px-10 max-xl:px-12 max-sm:px-4 max-lg:max-w-full mx-auto max-w-8xl`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
