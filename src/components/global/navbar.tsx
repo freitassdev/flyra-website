@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import logo from "@/assets/images/logos/logo-full-373x131.png";
+import logo from "@/assets/logos/logo-full-373x131.png";
 import Link from "next/link";
 import { LucideDot } from "lucide-react";
 import { Button } from "../ui/button";
