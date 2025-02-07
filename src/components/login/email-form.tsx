@@ -8,7 +8,10 @@ import Image from "next/image";
 import googleLogo from "@/assets/images/google-logo.svg";
 import logoFlyraMini from "@/assets/logos/logo-mini-80x80.png";
 import { RectangleEllipsis } from "lucide-react";
-import { TUserEmailLogin, UserEmailLoginSchema } from "@/types/login.schema";
+import {
+  TUserEmailLogin,
+  UserEmailLoginSchema,
+} from "@/validations/auth/login.schema";
 import { FieldErrors, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -101,7 +104,7 @@ export default function EmailForm({
         <Image
           src={logoFlyraMini}
           alt="Logo Flyra"
-          className="pointer-events-none select-none"
+          className="pointer-events-none select-none size-20"
         />
         <h1 className="text-3xl text-center font-bold text-foreground">
           Fazer Login
