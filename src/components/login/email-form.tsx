@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { Input } from "@/components/ui/input";
@@ -20,7 +21,8 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { useOtpLogin } from "@/hooks/auth/useOtpLogin";
 import { usePasswordLogin } from "@/hooks/auth/usePasswordLogin";
-// import Loader from '@/components/shared/loader'
+import { useRouter } from "next/navigation";
+import LoadingCircleSpinner from "../shared/loader";
 
 export default function EmailForm({
   setIsOtpLogin,
@@ -29,17 +31,24 @@ export default function EmailForm({
   setIsOtpLogin: (isOtpLogin: boolean) => void;
   setEmail: (email: string) => void;
 }) {
-  // const { sendOtpLoginEmail, isLoadingSendOtp } = useOtpLogin({
-  const { sendOtpLoginEmail } = useOtpLogin({
+  const { sendOtpLoginEmail, isLoadingSendOtp } = useOtpLogin({
     setIsOtpLogin,
   });
-  // const { loginWithEmail, isLoadingLogin, isLoadingResetPassword, resetPassword } =
-  const { loginWithEmail, isLoadingLogin, resetPassword } = usePasswordLogin();
+
+  const {
+    loginWithEmail,
+    isLoadingLogin,
+    isLoadingResetPassword,
+    resetPassword,
+  } = usePasswordLogin();
+
   const { register, handleSubmit, watch } = useForm<TUserEmailLogin>({
     resolver: zodResolver(UserEmailLoginSchema),
   });
 
   const watchEmail = watch("email");
+
+  const router = useRouter();
 
   const onSubmit = (data: TUserEmailLogin): void => {
     loginWithEmail(data.email, data.password);
@@ -73,7 +82,7 @@ export default function EmailForm({
     sendOtpLoginEmail(watchEmail, true);
   };
 
-  const handlePasswordReset = (): void => {
+  const handlePasswordReset = async (): Promise<void> => {
     if (!watchEmail) {
       toast.error(
         "Por favor, preencha o campo de email para redefinir sua senha.",
@@ -88,7 +97,8 @@ export default function EmailForm({
       return;
     }
 
-    resetPassword(watchEmail);
+    await resetPassword(watchEmail);
+    router.push("/auth/reset");
   };
 
   useEffect(() => {
@@ -135,8 +145,11 @@ export default function EmailForm({
         type="submit"
         disabled={isLoadingLogin}
       >
-        {/* {!isLoadingLogin && !isLoadingResetPassword ? 'Entrar' : <Loader size={25} stroke={4} />} */}
-        Entrar
+        {!isLoadingLogin && !isLoadingResetPassword ? (
+          "Entrar"
+        ) : (
+          <LoadingCircleSpinner />
+        )}
       </Button>
       <div className="w-full flex flex-row items-center gap-2 my-1">
         <Separator className="bg-muted w-auto flex-1" />
@@ -162,12 +175,11 @@ export default function EmailForm({
           onClick={handleGoToOtpLogin}
         >
           <RectangleEllipsis className="!size-5 absolute left-3" />
-          {/* {!isLoadingSendOtp ? (
-            'Receber código de login por email'
+          {!isLoadingSendOtp ? (
+            "Receber código de login por email"
           ) : (
-            <Loader size={25} stroke={4} />
-          )} */}
-          Receber código de login por email
+            <LoadingCircleSpinner />
+          )}
         </Button>
       </div>
       <div className="flex flex-col gap-1 items-center text-sm absolute inset-x-0 bottom-4">

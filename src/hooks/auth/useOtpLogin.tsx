@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
@@ -47,8 +48,7 @@ const useOtpLogin = ({ setIsOtpLogin, isOtpForm }: IUseOtpLogin) => {
       setIsOtpSended(true);
       if (isAbleToGoToOtp) {
         setIsAbleToGoToOtp(false);
-        // setIsOtpLogin && setIsOtpLogin(true) estava dando erro no eslint
-        if (setIsOtpLogin) setIsOtpLogin(true);
+        setIsOtpLogin && setIsOtpLogin(true);
       }
 
       setOtpTimer(60);

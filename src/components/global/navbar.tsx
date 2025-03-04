@@ -12,6 +12,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "../ui/sheet";
+import { useRouter } from "next/navigation";
 
 interface INavbarItem {
   name: string;
@@ -35,6 +36,12 @@ const navbarItems: INavbarItem[] = [
 
 export default function Navbar() {
   const [isMobileOpened, setIsMobileOpened] = useState<boolean>(true);
+
+  const router = useRouter();
+  const redirectToLoginPage = () => {
+    router.push("/auth/login");
+  };
+
   return (
     <>
       <nav className={`flex flex-row justify-between items-center py-4 `}>
@@ -57,7 +64,12 @@ export default function Navbar() {
               )}
             </div>
           ))}
-          <Button className="ml-3 px-8 rounded-full">Fazer Login</Button>
+          <Button
+            className="ml-3 px-8 rounded-full"
+            onClick={redirectToLoginPage}
+          >
+            Fazer Login
+          </Button>
         </div>
       </nav>
       <Sheet open={isMobileOpened} onOpenChange={setIsMobileOpened}>
@@ -80,7 +92,9 @@ export default function Navbar() {
                 </span>
               </Link>
             ))}
-            <Button className="px-8 rounded-full">Fazer Login</Button>
+            <Button className="px-8 rounded-full" onClick={redirectToLoginPage}>
+              Fazer Login
+            </Button>
           </div>
         </SheetContent>
       </Sheet>
