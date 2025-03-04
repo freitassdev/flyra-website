@@ -1,36 +1,51 @@
 "use client";
 
-import { useEffect } from "react";
+import { motion } from "framer-motion";
 
-interface ILoaderProps {
-  size?: number;
-  stroke?: number;
-  bgOpacity?: number;
-  speed?: number;
-  color?: string;
-}
-
-export default function Loader({
-  size = 40,
-  stroke = 5,
-  bgOpacity = 0,
-  speed = 2,
-  color = "hsl(var(--foreground))",
-}: ILoaderProps) {
-  useEffect(() => {
-    async function getLoader() {
-      const { ring } = await import("ldrs");
-      ring.register();
-    }
-    getLoader();
-  }, []);
+function LoadingCircleSpinner() {
   return (
-    <l-ring
-      size={size}
-      stroke={stroke}
-      bg-opacity={bgOpacity}
-      speed={speed}
-      color={color}
-    ></l-ring>
+    <div className="container">
+      <motion.div
+        className="spinner"
+        animate={{ rotate: 360 }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+      <StyleSheet />
+    </div>
   );
 }
+
+/**
+ * ==============   Styles   ================
+ */
+function StyleSheet() {
+  return (
+    <style>
+      {`
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 40px;
+                border-radius: 8px;
+            }
+
+            .spinner {
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                border: 3px solid #ffffff33;
+                border-top-color: #101014;
+                border-top-width: 4px;
+                will-change: transform;
+            }
+            `}
+    </style>
+  );
+}
+
+export default LoadingCircleSpinner;
