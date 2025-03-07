@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import EmailForm from "@/components/login/email-form";
+import EmailForm from "@/components/forms/email-form";
 import { AnimatePresence, motion } from "framer-motion";
-import OtpForm from "@/components/login/otp-form";
+import OtpForm from "@/components/forms/otp-form";
 
 export default function LoginPage() {
   const [isOtpLogin, setIsOtpLogin] = useState<boolean>(false);

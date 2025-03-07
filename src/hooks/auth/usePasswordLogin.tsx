@@ -74,7 +74,7 @@ const usePasswordLogin = () => {
           return;
         }
         return toast.success(
-          "E-mail de recuperação de senha enviado com sucesso",
+          "E-mail de recuperação de senha enviado com sucesso! Verifique sua caixa de entrada",
         );
       },
       onError: (error) => {

@@ -2,10 +2,6 @@ import { z } from "zod";
 
 export const ResetPasswordSchema = z
   .object({
-    code: z
-      .string({ message: "Código inválido." })
-      .length(6, { message: "Seu código deve ter exatamente 6 caracteres." })
-      .regex(/^\d{6}$/, { message: "O código deve conter apenas números." }),
     newPassword: z
       .string({ message: "A senha é obrigatória." })
       .min(6, { message: "A senha deve ter no mínimo 6 caracteres." })

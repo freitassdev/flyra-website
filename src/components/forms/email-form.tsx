@@ -8,7 +8,7 @@ import { Separator } from "../ui/separator";
 import Image from "next/image";
 import googleLogo from "@/assets/images/google-logo.svg";
 import logoFlyraMini from "@/assets/logos/logo-mini-80x80.png";
-import { RectangleEllipsis } from "lucide-react";
+import { Eye, EyeOff, RectangleEllipsis } from "lucide-react";
 import {
   TUserEmailLogin,
   UserEmailLoginSchema,
@@ -16,12 +16,11 @@ import {
 import { FieldErrors, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { useOtpLogin } from "@/hooks/auth/useOtpLogin";
 import { usePasswordLogin } from "@/hooks/auth/usePasswordLogin";
-import { useRouter } from "next/navigation";
 import LoadingCircleSpinner from "../shared/loader";
 
 export default function EmailForm({
@@ -46,9 +45,9 @@ export default function EmailForm({
     resolver: zodResolver(UserEmailLoginSchema),
   });
 
-  const watchEmail = watch("email");
+  const [showPassword, setShowPassword] = useState(false);
 
-  const router = useRouter();
+  const watchEmail = watch("email");
 
   const onSubmit = (data: TUserEmailLogin): void => {
     loginWithEmail(data.email, data.password);
@@ -98,12 +97,15 @@ export default function EmailForm({
     }
 
     await resetPassword(watchEmail);
-    router.push("/auth/reset");
   };
 
   useEffect(() => {
     setEmail(watchEmail);
   }, [watchEmail]);
+
+  const handleShowPassword = (): void => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <form
@@ -122,18 +124,42 @@ export default function EmailForm({
       </div>
       <div className="flex flex-col gap-5 items-center">
         <div className="flex flex-col gap-2 w-full">
-          <Label className="absolute -mt-[0.40rem] ml-3 bg-background text-zinc-300">
+          <Label
+            htmlFor="email"
+            className="absolute -mt-[0.40rem] ml-3 bg-background text-zinc-300"
+          >
             Email
           </Label>
-          <Input className="h-10" {...register("email")} />
+          <Input className="h-10" id="email" {...register("email")} />
         </div>
         <div className="flex flex-col gap-2 w-full">
-          <Label className="absolute -mt-[0.40rem] ml-3 bg-background text-zinc-300">
+          <Label
+            htmlFor="password"
+            className="absolute -mt-[0.40rem] ml-3 bg-background text-zinc-300"
+          >
             Senha
           </Label>
-          <Input className="h-10" {...register("password")} />
+          <Input
+            className="h-10"
+            id="password"
+            type={showPassword ? "text" : "password"}
+            {...register("password")}
+          />
+          {showPassword ? (
+            <Eye
+              className="relative bottom-10 left-72 cursor-pointer"
+              size={22}
+              onClick={handleShowPassword}
+            />
+          ) : (
+            <EyeOff
+              className="relative bottom-10 left-72 cursor-pointer"
+              size={22}
+              onClick={handleShowPassword}
+            />
+          )}
           <p
-            className="text-sm text-muted-foreground cursor-pointer -mt-2 hover:underline hover:text-primary"
+            className="text-sm text-muted-foreground cursor-pointer -mt-9 hover:underline hover:text-primary"
             onClick={handlePasswordReset}
           >
             Esqueceu sua senha ou ainda não tem uma?

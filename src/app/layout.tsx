@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/providers/theme.provider";
 import { UserStoreProvider } from "@/providers/stores/user-store.provider";
 import { Providers } from "@/providers/providers.provider";
+import { Toaster } from "sonner";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,7 +26,10 @@ export default function RootLayout({
               defaultTheme="dark"
               enableSystem={false}
             >
-              {children}
+              <NuqsAdapter>
+                <Toaster />
+                {children}
+              </NuqsAdapter>
             </ThemeProvider>
           </UserStoreProvider>
         </Providers>

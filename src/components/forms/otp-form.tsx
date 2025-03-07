@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { useOtpLogin } from "@/hooks/auth/useOtpLogin";
 import { useState } from "react";
 import { ValidateCodeLoginSchema } from "@/validations/auth/validateCode.schema";
+import LoadingCircleSpinner from "../shared/loader";
 
 export default function OtpForm({
   setIsOtpLogin,
@@ -53,7 +54,7 @@ export default function OtpForm({
         </p>
       </div>
       <div className="flex flex-col gap-5 items-center">
-        <div className="flex flex-col gap-2 w-full">
+        <div className="flex flex-col items-center gap-2 w-full">
           <InputOTP
             maxLength={6}
             value={otpCode}
@@ -89,7 +90,11 @@ export default function OtpForm({
           onClick={() => submit(email, otpCode)}
           disabled={isLoadingLogin || isLoadingSendOtp}
         >
-          {/* {!isLoadingLogin && !isLoadingSendOtp ? 'Entrar' : <Loader size={25} stroke={4} />} */}
+          {!isLoadingLogin && !isLoadingSendOtp ? (
+            "Entrar"
+          ) : (
+            <LoadingCircleSpinner />
+          )}
         </Button>
         <Button
           variant={"secondary"}

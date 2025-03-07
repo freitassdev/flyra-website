@@ -2,7 +2,7 @@ import { IApiResponse } from "@/constants/types";
 import {
   IResetPassword,
   resetPassword,
-} from "@/services/queries/login/reset-password.query";
+} from "@/services/queries/reset-password/reset-password.query";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
@@ -20,7 +20,9 @@ const useResetPassword = () => {
         return;
       }
       if (data.success) {
-        toast.success("Senha redefinida com sucesso!");
+        toast.success(
+          "Senha redefinida com sucesso! Faça login com sua nova senha",
+        );
         return;
       }
       toast.error("Falha ao redefinir sua senha");
@@ -47,14 +49,8 @@ const useResetPassword = () => {
     code: string;
     newPassword: string;
   }) => {
-    return new Promise<void>((resolve, reject) => {
-      mutate(
-        { code, newPassword },
-        {
-          onSuccess: () => resolve(),
-          onError: (error) => reject(error),
-        },
-      );
+    return new Promise<void>(() => {
+      mutate({ code, newPassword });
     });
   };
 

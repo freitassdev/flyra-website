@@ -7,7 +7,6 @@ export interface IResetPassword {
 }
 
 export interface IResetPasswordInput {
-  code: string;
   newPassword: string;
   confirmNewPassword: string;
 }
