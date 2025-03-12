@@ -17,7 +17,7 @@ import { FieldErrors, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import LoadingCircleSpinner from "../shared/loader";
-import useValidateAccountCode from "@/hooks/validate-account/useValidateAccountCode";
+import useValidateAccountCode from "@/hooks/auth/validate-account/useValidateAccountCode";
 
 export default function ValidateAccountForm() {
   const [code, setCode] = useState("");

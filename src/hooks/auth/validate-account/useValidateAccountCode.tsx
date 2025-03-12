@@ -1,19 +1,19 @@
 import { IApiResponse } from "@/constants/types";
 import {
-  IResetPassword,
-  resetPassword,
-} from "@/services/queries/reset-password/reset-password.query";
+  IValidateAccountCode,
+  validateAccountCode,
+} from "@/services/queries/auth/validate-account/validate-account-code.query";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
 
-const useResetPassword = () => {
+const useValidateAccountCode = () => {
   const { isPending, mutate } = useMutation<
     IApiResponse,
     AxiosError<IApiResponse>,
-    IResetPassword
+    IValidateAccountCode
   >({
-    mutationFn: resetPassword,
+    mutationFn: validateAccountCode,
     onSuccess: (data) => {
       if (data.error) {
         toast.error(data.message);
@@ -21,11 +21,11 @@ const useResetPassword = () => {
       }
       if (data.success) {
         toast.success(
-          "Senha redefinida com sucesso! Faça login com sua nova senha",
+          "Sua conta foi validada com sucesso! Faça login com sua nova senha",
         );
         return;
       }
-      toast.error("Falha ao redefinir sua senha");
+      toast.error("Falha ao validar sua conta");
     },
     onError: (error) => {
       if (
@@ -37,12 +37,12 @@ const useResetPassword = () => {
         return;
       }
       toast.error(
-        "Ocorreu um erro ao validar seu código de recuperação de senha",
+        "Ocorreu um erro ao validar seu código de validação de conta",
       );
     },
   });
 
-  const handleResetPassword = async ({
+  const handleValidateAccount = async ({
     code,
     newPassword,
   }: {
@@ -55,9 +55,9 @@ const useResetPassword = () => {
   };
 
   return {
-    handleResetPassword,
+    handleValidateAccount,
     isLoading: isPending,
   };
 };
 
-export default useResetPassword;
+export default useValidateAccountCode;

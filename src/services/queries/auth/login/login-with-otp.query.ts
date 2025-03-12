@@ -1,5 +1,5 @@
-import { ILoginResponse } from "@/services/queries/login/login-with-password.query";
-import axios from "../../axios.service";
+import { ILoginResponse } from "@/services/queries/auth/login/login-with-password.query";
+import axios from "../../../axios.service";
 
 export interface ILoginWithOtpInput {
   email: string;

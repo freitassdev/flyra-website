@@ -2,7 +2,7 @@ import {
   ILoginResponse,
   ILoginInput,
   login,
-} from "@/services/queries/login/login-with-password.query";
+} from "@/services/queries/auth/login/login-with-password.query";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
@@ -12,7 +12,7 @@ import {
   ISendResetPasswordEmailInput,
   sendResetPasswordEmail,
   TSendResetPasswordEmailResponse,
-} from "@/services/queries/reset-password/send-reset-password.query";
+} from "@/services/queries/auth/reset-password/send-reset-password.query";
 
 const usePasswordLogin = () => {
   const { setItem } = useLocalStorage();

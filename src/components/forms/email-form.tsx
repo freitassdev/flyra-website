@@ -19,8 +19,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
-import { useOtpLogin } from "@/hooks/auth/useOtpLogin";
-import { usePasswordLogin } from "@/hooks/auth/usePasswordLogin";
+import { useOtpLogin } from "@/hooks/auth/login/useOtpLogin";
+import { usePasswordLogin } from "@/hooks/auth/login/usePasswordLogin";
 import LoadingCircleSpinner from "../shared/loader";
 
 export default function EmailForm({

@@ -6,13 +6,13 @@ import {
   ISendOtpInput,
   sendOtpEmail,
   TSendOtpResponse,
-} from "@/services/queries/login/send-otp-email.query";
+} from "@/services/queries/auth/login/send-otp-email.query";
 import { useEffect, useState } from "react";
 import {
   ILoginWithOtpInput,
   loginWithOtp,
   TLoginWithOtpResponse,
-} from "@/services/queries/login/login-with-otp.query";
+} from "@/services/queries/auth/login/login-with-otp.query";
 import { useLocalStorage } from "@/hooks/misc/useLocalStorage";
 import { useUserStore } from "@/hooks/stores/userUserStore";
 

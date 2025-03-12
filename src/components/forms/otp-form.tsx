@@ -8,7 +8,7 @@ import Image from "next/image";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-import { useOtpLogin } from "@/hooks/auth/useOtpLogin";
+import { useOtpLogin } from "@/hooks/auth/login/useOtpLogin";
 import { useState } from "react";
 import { ValidateCodeLoginSchema } from "@/validations/auth/validateCode.schema";
 import LoadingCircleSpinner from "../shared/loader";

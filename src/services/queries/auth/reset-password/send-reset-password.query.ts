@@ -1,4 +1,4 @@
-import axios from "../../axios.service";
+import axios from "../../../axios.service";
 import { IApiResponse } from "@/constants/types";
 
 export interface ISendResetPasswordEmailInput {

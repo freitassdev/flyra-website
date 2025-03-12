@@ -14,7 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldErrors, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import useResetPassword from "@/hooks/reset-password/useResetPassword";
+import useResetPassword from "@/hooks/auth/reset-password/useResetPassword";
 import LoadingCircleSpinner from "../shared/loader";
 import { useQueryState } from "nuqs";
 import { ChevronLeft } from "lucide-react";
