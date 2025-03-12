@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import logoFlyraMini from "@/assets/logos/logo-mini-80x80.png";
-import { useEffect } from "react";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "../ui/input-otp";
+import { REGEXP_ONLY_DIGITS } from "input-otp";
+import { useEffect, useState } from "react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -14,12 +16,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldErrors, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import useResetPassword from "@/hooks/reset-password/useResetPassword";
 import LoadingCircleSpinner from "../shared/loader";
-import { useQueryState } from "nuqs";
-import { ChevronLeft } from "lucide-react";
+import useValidateAccountCode from "@/hooks/validate-account/useValidateAccountCode";
 
-export default function ResetPasswordForm() {
+export default function ValidateAccountForm() {
+  const [code, setCode] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -29,9 +31,7 @@ export default function ResetPasswordForm() {
     resolver: zodResolver(ResetPasswordSchema),
   });
 
-  const [code] = useQueryState("code");
-
-  const { handleResetPassword, isLoading } = useResetPassword();
+  const { handleValidateAccount, isLoading } = useValidateAccountCode();
 
   const watchConfirmNewPassword = watch("confirmNewPassword");
 
@@ -43,13 +43,14 @@ export default function ResetPasswordForm() {
       return;
     }
 
-    if (!code) return;
-
-    await handleResetPassword({
+    await handleValidateAccount({
       code,
       newPassword: watchConfirmNewPassword,
     })
       .then(() => {
+        toast.success(
+          "Senha redefinida com sucesso! Redirecionando para a página de login...",
+        );
         router.push("/auth/login");
       })
       .catch(() => {
@@ -68,26 +69,50 @@ export default function ResetPasswordForm() {
   };
 
   useEffect(() => {
-    if (!code) {
-      toast.error("Código de recuperação inválido");
-      router.push("/auth/login");
-      return;
-    }
-  }, [router, code]);
+    console.log(code);
+  }, [code]);
 
   return (
     <form
-      className="w-full h-screen flex flex-col mt-[4vh]"
+      className="w-full h-full flex flex-col mt-[4vh]"
       onSubmit={handleSubmit(onSubmit, onError)}
     >
       <div className="flex flex-col gap-2 items-center">
         <Image className="size-20" src={logoFlyraMini} alt="Flyra Logo" />
         <h1 className="text-3xl text-center font-bold text-foreground">
-          Redefinir senha
+          Validação de conta
         </h1>
+        <p className="text-md text-center">
+          Digite o código de redefinição de 6 dígitos que enviamos para seu
+          e-mail.
+        </p>
       </div>
-      <div className="w-full flex flex-col gap-2 items-center">
-        <div className="w-1/6 flex flex-col gap-3 py-6">
+      <div className="flex flex-col gap-2 items-center">
+        <div className="flex flex-col gap-5 py-6">
+          <div className="flex flex-col gap-2 w-full">
+            <Label
+              htmlFor="code"
+              className="absolute -mt-[0.40rem] ml-3 bg-background text-zinc-300 z-20"
+            >
+              Código
+            </Label>
+            <InputOTP
+              maxLength={6}
+              value={code}
+              onChange={(value) => setCode(value)}
+              pattern={REGEXP_ONLY_DIGITS}
+              id="code"
+            >
+              <InputOTPGroup>
+                <InputOTPSlot index={0} />
+                <InputOTPSlot index={1} />
+                <InputOTPSlot index={2} />
+                <InputOTPSlot index={3} />
+                <InputOTPSlot index={4} />
+                <InputOTPSlot index={5} />
+              </InputOTPGroup>
+            </InputOTP>
+          </div>
           <div className="flex flex-col gap-2 w-full">
             <Label
               htmlFor="newPassword"
@@ -117,22 +142,11 @@ export default function ResetPasswordForm() {
             />
           </div>
           <Button
-            className="h-11 text-foreground relative flex flex-row items-center w-full my-1"
+            className="h-11 text-foreground relative flex flex-row items-center w-full my-4"
             type="submit"
             disabled={isLoading}
           >
             {!isLoading ? "Enviar" : <LoadingCircleSpinner />}
-          </Button>
-          <Button
-            variant={"secondary"}
-            className="h-11 text-foreground relative flex flex-row items-center w-full"
-            type="button"
-            onClick={() => {
-              router.push("/auth/login");
-            }}
-          >
-            <ChevronLeft className="!size-5 absolute left-3" />
-            Voltar
           </Button>
         </div>
       </div>

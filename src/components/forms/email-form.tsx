@@ -209,7 +209,7 @@ export default function EmailForm({
         </Button>
       </div>
       <div className="flex flex-col gap-1 items-center text-sm absolute inset-x-0 bottom-4">
-        <p>Copiryght © 2025 Flyra Drones, Inc.</p>
+        <p>Copyright © 2025 Flyra Drones, Inc.</p>
         <p>v0.0.1-rick-primarious</p>
       </div>
     </form>

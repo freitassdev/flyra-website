@@ -108,7 +108,7 @@ export default function OtpForm({
           Voltar
         </Button>
         <div className="flex flex-col gap-1 items-center text-sm">
-          <p>Copiryght © 2025 Flyra Drones, Inc.</p>
+          <p>Copyright © 2025 Flyra Drones, Inc.</p>
           <p>v0.0.1-rick-primarious</p>
         </div>
       </div>

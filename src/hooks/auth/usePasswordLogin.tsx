@@ -12,7 +12,7 @@ import {
   ISendResetPasswordEmailInput,
   sendResetPasswordEmail,
   TSendResetPasswordEmailResponse,
-} from "@/services/queries/login/send-reset-password.query";
+} from "@/services/queries/reset-password/send-reset-password.query";
 
 const usePasswordLogin = () => {
   const { setItem } = useLocalStorage();
