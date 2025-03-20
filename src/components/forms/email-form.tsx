@@ -184,7 +184,7 @@ export default function EmailForm({
       </div>
       <div className="flex flex-col gap-3 p-3 w-full">
         <Button
-          variant={"secondary"}
+          variant={"card"}
           className="h-11 text-foreground relative flex flex-row items-center w-full"
         >
           <Image
@@ -195,7 +195,7 @@ export default function EmailForm({
           Continuar com Google
         </Button>
         <Button
-          variant={"secondary"}
+          variant={"card"}
           className="h-11 text-foreground relative flex flex-row items-center w-full"
           type="button"
           onClick={handleGoToOtpLogin}
