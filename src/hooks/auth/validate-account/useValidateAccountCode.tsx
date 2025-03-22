@@ -36,9 +36,7 @@ const useValidateAccountCode = () => {
         toast.error(error.response.data.message);
         return;
       }
-      toast.error(
-        "Ocorreu um erro ao validar seu código de validação de conta",
-      );
+      toast.error("Ocorreu um erro ao validar seu código.");
     },
   });
 
