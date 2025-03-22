@@ -7,11 +7,11 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
 import { useUserStore } from "@/hooks/stores/userUserStore";
-import { useLocalStorage } from "@/hooks/misc/useLocalStorage";
 import { EUserRole } from "@/models/role";
+import { useCookies } from "@/hooks/misc/useCookies";
 
 export const useAuth = () => {
-  const { setItem } = useLocalStorage();
+  const { setCookie } = useCookies();
   const { setUser } = useUserStore((store) => store);
   const { mutate, isPending } = useMutation<
     ILoginResponse,
@@ -39,7 +39,7 @@ export const useAuth = () => {
           ...data.user,
           token: data.token,
         });
-        setItem("auth-token", data.token);
+        setCookie("auth-token", data.token);
         return;
       }
       return toast.error("Ocorreu um erro ao fazer login");

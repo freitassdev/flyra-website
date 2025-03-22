@@ -75,13 +75,13 @@ export default function EmailForm() {
           <Input className="h-10" id="email" {...register("email")} />
         </div>
         <div className="flex flex-col gap-2 w-full">
-          <Label
-            htmlFor="password"
-            className="absolute -mt-[0.40rem] ml-3 bg-background text-zinc-300"
-          >
-            Senha
-          </Label>
           <div className="relative w-full h-10">
+            <Label
+              htmlFor="password"
+              className="absolute -mt-[0.40rem] ml-3 bg-background text-zinc-300"
+            >
+              Senha
+            </Label>
             <Input
               className="h-10"
               id="password"
@@ -102,7 +102,7 @@ export default function EmailForm() {
           </div>
         </div>
       </div>
-      <Separator />
+      <Separator className="mt-4" />
       <Button
         className="h-11 text-foreground relative flex flex-row items-center w-full my-4"
         type="submit"
