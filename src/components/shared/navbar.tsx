@@ -1,17 +1,12 @@
 "use client";
 import Image from "next/image";
 import logo from "@/assets/logos/logo-full-373x131.png";
-import Link from "next/link";
-import { LucideDot } from "lucide-react";
+// import Link from "next/link";
+// import { LucideDot } from "lucide-react";
 import { Button } from "../ui/button";
 import { useState } from "react";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "../ui/sheet";
+import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/navbar-menu";
+import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 
 interface INavbarItem {
@@ -36,6 +31,7 @@ const navbarItems: INavbarItem[] = [
 
 export default function Navbar() {
   const [isMobileOpened, setIsMobileOpened] = useState<boolean>(true);
+  const [active, setActive] = useState<string | null>(null);
 
   const router = useRouter();
   const redirectToLoginPage = () => {
@@ -43,61 +39,67 @@ export default function Navbar() {
   };
 
   return (
-    <>
-      <nav className={`flex flex-row justify-between items-center py-4 `}>
-        <Image
-          src={logo}
-          width={180}
-          className="max-md:w-40"
-          alt="flyra logo"
-        />
-        <div className="flex flex-row gap-3 items-center">
-          {navbarItems.map((item, index) => (
-            <div className="contents" key={index}>
-              <Link href={item.link}>
-                <span className="hover:text-muted-foreground transition-colors">
-                  {item.name}
-                </span>
-              </Link>
-              {index !== navbarItems.length - 1 && (
-                <LucideDot className="size-6 text-muted-foreground/60" />
-              )}
+    <div className={cn("fixed top-5 inset-x-0 max-w-6xl mx-auto z-50")}>
+      <Menu setActive={setActive}>
+        <div className="w-full flex flex-row justify-between items-center">
+          <Image src={logo} alt="logo" className="w-auto" height={30} />
+          <div className="flex flex-row items-center justify-start gap-10">
+            <div className="flex flex-row items-center justify-start gap-5">
+              <MenuItem
+                setActive={setActive}
+                active={active}
+                item="Institucional"
+              >
+                <div className="flex flex-col space-y-4 text-sm">
+                  <HoveredLink href="/about">Sobre nós</HoveredLink>
+                  <HoveredLink href="/team">Nossa Equipe</HoveredLink>
+                  <HoveredLink href="/faq">
+                    Perguntas Frequentes (FAQ)
+                  </HoveredLink>
+                  <HoveredLink href="/branding">Contato</HoveredLink>
+                </div>
+              </MenuItem>
+              <MenuItem setActive={setActive} active={active} item="Products">
+                <div className="  text-sm grid grid-cols-2 gap-10 p-4">
+                  <ProductItem
+                    title="Algochurn"
+                    href="https://algochurn.com"
+                    src="https://assets.aceternity.com/demos/algochurn.webp"
+                    description="Prepare for tech interviews like never before."
+                  />
+                  <ProductItem
+                    title="Tailwind Master Kit"
+                    href="https://tailwindmasterkit.com"
+                    src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
+                    description="Production ready Tailwind css components for your next project"
+                  />
+                  <ProductItem
+                    title="Moonbeam"
+                    href="https://gomoonbeam.com"
+                    src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
+                    description="Never write from scratch again. Go from idea to blog in minutes."
+                  />
+                  <ProductItem
+                    title="Rogue"
+                    href="https://userogue.com"
+                    src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
+                    description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
+                  />
+                </div>
+              </MenuItem>
+              <MenuItem setActive={setActive} active={active} item="Blog">
+                <div className="flex flex-col space-y-4 text-sm">
+                  <HoveredLink href="/hobby">Hobby</HoveredLink>
+                  <HoveredLink href="/individual">Individual</HoveredLink>
+                  <HoveredLink href="/team">Team</HoveredLink>
+                  <HoveredLink href="/enterprise">Enterprise</HoveredLink>
+                </div>
+              </MenuItem>
             </div>
-          ))}
-          <Button
-            className="ml-3 px-8 rounded-full"
-            onClick={redirectToLoginPage}
-          >
-            Fazer Login
-          </Button>
-        </div>
-      </nav>
-      <Sheet open={isMobileOpened} onOpenChange={setIsMobileOpened}>
-        <SheetContent className="max-md:w-full">
-          <SheetHeader className="flex flex-row justify-between items-center">
-            <Image
-              src={logo}
-              width={160}
-              className="max-md:w-40"
-              alt="flyra logo"
-            />
-            <SheetTitle />
-            <SheetClose />
-          </SheetHeader>
-          <div className="flex flex-col gap-4">
-            {navbarItems.map((item, index) => (
-              <Link href={item.link} key={index}>
-                <span className="hover:text-muted-foreground transition-colors">
-                  {item.name}
-                </span>
-              </Link>
-            ))}
-            <Button className="px-8 rounded-full" onClick={redirectToLoginPage}>
-              Fazer Login
-            </Button>
+            <Button className="px-6 rounded-sm">Download</Button>
           </div>
-        </SheetContent>
-      </Sheet>
-    </>
+        </div>
+      </Menu>
+    </div>
   );
 }
