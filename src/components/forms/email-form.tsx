@@ -15,7 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useState } from "react";
 import { toast } from "sonner";
-import LoadingCircleSpinner from "../shared/loader";
+import LoadingCircleSpinner from "../ui/loader";
 import { useAuth } from "@/hooks/auth/login/useAuth";
 import { Separator } from "../ui/separator";
 

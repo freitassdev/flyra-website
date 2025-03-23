@@ -1,6 +1,6 @@
 import backgroundLogo from "@/assets/images/background-logo.png";
-import Footer from "@/components/global/footer";
-import Navbar from "@/components/global/navbar";
+import Footer from "@/components/shared/footer";
+import Navbar from "@/components/shared/navbar";
 import Image from "next/image";
 export default function Home() {
   return (

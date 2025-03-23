@@ -16,7 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldErrors, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import LoadingCircleSpinner from "../shared/loader";
+import LoadingCircleSpinner from "../ui/loader";
 import useValidateAccountCode from "@/hooks/auth/validate-account/useValidateAccountCode";
 
 export default function ValidateAccountForm() {

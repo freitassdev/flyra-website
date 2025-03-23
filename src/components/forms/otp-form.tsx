@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 import { useOtpLogin } from "@/hooks/auth/login/useOtpLogin";
 import { useState } from "react";
 import { ValidateCodeLoginSchema } from "@/validations/auth/validateCode.schema";
-import LoadingCircleSpinner from "../shared/loader";
+import LoadingCircleSpinner from "../ui/loader";
 
 export default function OtpForm({
   setIsOtpLogin,
