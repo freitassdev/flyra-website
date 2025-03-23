@@ -2,9 +2,9 @@ import { Github, Instagram, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-background w-full">
+    <footer className="bg-white dark:bg-background w-full relative bottom-0">
       <div className="mx-auto w-screen">
-        <div className="grid grid-cols-4 gap-8 px-8 py-6 lg:py-8  max-md:grid-cols-2">
+        <div className="grid grid-cols-4 gap-8 px-8 py-6 lg:py-8 max-md:grid-cols-2">
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
               Empresa

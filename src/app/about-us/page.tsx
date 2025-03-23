@@ -1,12 +1,12 @@
+import AboutUsPage from "@/components/global/about-us";
 import Footer from "@/components/global/footer";
-import HeroSection from "@/components/global/hero-section";
 import Navbar from "@/components/global/navbar";
 
-export default function Home() {
+export default function AboutUs() {
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full relative">
       <Navbar />
-      <HeroSection />
+      <AboutUsPage />
       <Footer />
     </div>
   );

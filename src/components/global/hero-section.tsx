@@ -4,7 +4,7 @@ import { Spotlight } from "../ui/spotlight-new";
 import { WordRotate } from "../magicui/word-rotate";
 import { AuroraText } from "../magicui/aurora-text";
 
-export default function Introduction() {
+export default function HeroSection() {
   const words = ["detecta", "previne", "protege"];
 
   return (

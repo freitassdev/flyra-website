@@ -12,6 +12,9 @@ export default {
       maxWidth: {
         "8xl": "94rem",
       },
+      backgroundImage: {
+        noise: "url('/noise-dark.png')",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
