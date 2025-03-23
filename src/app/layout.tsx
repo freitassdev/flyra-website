@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/providers/theme.provider";
-import { UserStoreProvider } from "@/providers/stores/user-store.provider";
-import { Providers } from "@/providers/providers.provider";
 import { Toaster } from "sonner";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import "./globals.css";
@@ -19,20 +17,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`h-dvh overflow-y-scroll w-full antialiased`}>
-        <Providers>
-          <UserStoreProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="dark"
-              enableSystem={false}
-            >
-              <NuqsAdapter>
-                <Toaster />
-                {children}
-              </NuqsAdapter>
-            </ThemeProvider>
-          </UserStoreProvider>
-        </Providers>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+        >
+          <NuqsAdapter>
+            <Toaster />
+            {children}
+          </NuqsAdapter>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -2,9 +2,9 @@ import { Github, Instagram, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-background w-full absolute bottom-0 left-0 right-0">
-      <div className="mx-auto w-full max-w-screen-xl">
-        <div className="grid grid-cols-4 gap-8 px-4 py-6 lg:py-8  max-md:grid-cols-2">
+    <footer className="bg-white dark:bg-background w-full">
+      <div className="mx-auto w-screen">
+        <div className="grid grid-cols-4 gap-8 px-8 py-6 lg:py-8  max-md:grid-cols-2">
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
               Empresa
@@ -107,7 +107,7 @@ export default function Footer() {
         <div className="px-4 py-6 bg-gray-100 dark:bg-background border-t-2 md:flex md:items-center md:justify-between">
           <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
             Copyright © 2025
-            <a href="https://flowbite.com/"> Flyra Drones, Inc.</a>
+            <a href="https://flyra.tech/"> Flyra Drones, Inc.</a>
           </span>
           <div className="flex items-center mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
             <a
