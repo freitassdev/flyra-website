@@ -1,19 +1,46 @@
 "use client";
+
 import React from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export function CardsCarousel() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const element = document.getElementById("animatedComponent");
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.75) {
+          setIsVisible(true);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const cards = data.map((card, index) => (
     <Card key={card.src} card={card} index={index} />
   ));
 
   return (
-    <div className="w-full h-full py-20 z-20">
+    <motion.div
+      id="animatedComponent"
+      initial={{ x: "80%", opacity: 0 }}
+      animate={isVisible ? { x: 0, opacity: 1 } : {}}
+      transition={{ duration: 0.5, ease: "anticipate" }}
+      className="w-full h-full py-20 z-20 flex flex-col items-center justify-center bg-background/30"
+    >
       <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
         Filosofia
       </h2>
       <Carousel items={cards} />
-    </div>
+    </motion.div>
   );
 }
 
