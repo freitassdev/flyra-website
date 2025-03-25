@@ -16,11 +16,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { toast } from "sonner";
 import LoadingCircleSpinner from "../ui/loader";
-import { useAuth } from "@/hooks/auth/login/useAuth";
 import { Separator } from "../ui/separator";
+import { useTempLogin } from "@/hooks/auth/login/useTempLogin";
 
 export default function EmailForm() {
-  const { loginWithEmail, isLoadingLogin } = useAuth();
+  const { isLoadingLogin, tempLogin } = useTempLogin();
 
   const { register, handleSubmit } = useForm<TUserEmailLogin>({
     resolver: zodResolver(UserEmailLoginSchema),
@@ -29,7 +29,7 @@ export default function EmailForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = (data: TUserEmailLogin): void => {
-    loginWithEmail(data.email, data.password);
+    tempLogin(data.email, data.password);
   };
 
   const onError = (errors: FieldErrors<TUserEmailLogin>): void => {

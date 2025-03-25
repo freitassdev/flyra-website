@@ -1,8 +1,6 @@
 import { Spotlight } from "@/components/ui/spotlight-new";
-import backgroundLogo from "@/assets/images/background-logo.png";
 import Footer from "@/components/shared/footer";
 import Navbar from "@/components/shared/navbar";
-import Image from "next/image";
 import { WordRotate } from "@/components/home/word-rotate";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { LucideSparkles } from "lucide-react";
@@ -19,7 +17,7 @@ export default function Home() {
           </HoverBorderGradient>
           <div className="flex flex-col font-bold text-6xl">
             <div className="flex flex-row gap-2">
-              <h1 className="">Inteligência artificial que</h1>
+              <h1>Inteligência artificial que</h1>
               <WordRotate
                 className="text-primary"
                 words={["detecta", "protege", "previne"]}

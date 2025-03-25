@@ -4,7 +4,6 @@ import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/mantine";
 import { locales } from "@blocknote/core";
 
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
@@ -12,7 +11,7 @@ import Image from "next/image";
 import "@blocknote/core/fonts/inter.css";
 import "@blocknote/mantine/style.css";
 import "@blocknote/react/style.css";
-// import "@/css/blocknote.css";
+import "./blocknote.css";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -23,8 +22,7 @@ import {
 } from "@/components/ui/popover";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { CircleArrowRight, Info } from "lucide-react";
-// import xss from "xss";
+import { CircleArrowRight, LucidePlus } from "lucide-react";
 
 export default function Editor() {
   const [html, setHtml] = useState<string>("");
@@ -159,48 +157,28 @@ export default function Editor() {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="flex flex-col gap-3">
-        <Input
-          maxLength={100}
-          className="text-4xl font-extrabold h-20"
-          placeholder="Insira o título do post"
-          value={title}
-          onChange={(e) => setTitle(e.currentTarget.value)}
-        />
-        <Input
-          maxLength={200}
-          className="text-lg"
-          placeholder="Insira uma descrição curta"
-          value={description}
-          onChange={(e) => setDescription(e.currentTarget.value)}
-        />
-        <div className="flex flex-row justify-between w-full">
-          <em>Pressione Enter ou vírgula para adicionar uma tag.</em>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Info className="cursor-pointer" />
-            </PopoverTrigger>
-            <PopoverContent className="flex flex-col gap-2 border-border">
-              <p className="text-primary">
-                Você pode inserir uma capa personalizada clicando na imagem
-                abaixo.
-              </p>
-            </PopoverContent>
-          </Popover>
+      <div className="flex flex-row gap-3">
+        <div className="flex flex-col gap-3 w-full">
+          <Input
+            maxLength={100}
+            className="!text-4xl font-extrabold h-20"
+            placeholder="Insira o título do post"
+            value={title}
+            onChange={(e) => setTitle(e.currentTarget.value)}
+          />
+          <Input
+            maxLength={200}
+            className="text-lg"
+            placeholder="Insira uma descrição curta"
+            value={description}
+            onChange={(e) => setDescription(e.currentTarget.value)}
+          />
         </div>
         <Popover>
           <PopoverTrigger asChild>
-            <AspectRatio
-              ratio={16 / 9}
-              className="transition-all cursor-pointer bg-muted hover:brightness-75"
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-                alt="Photo by Drew Beamer"
-                fill
-                className="h-full w-full rounded-md object-cover"
-              />
-            </AspectRatio>
+            <div className="cursor-pointer hover:bg-card/80 transition-colors flex flex-col items-center justify-center w-full min-h-full max-w-[20%] rounded-md bg-card">
+              <LucidePlus /> Adicionar Capa
+            </div>
           </PopoverTrigger>
           <PopoverContent className="flex flex-col gap-2 border-border">
             <Label className="text-lg font-semibold text-primary">

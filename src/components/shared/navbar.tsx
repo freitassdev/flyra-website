@@ -59,7 +59,7 @@ export default function Navbar() {
                   <HoveredLink href="/branding">Contato</HoveredLink>
                 </div>
               </MenuItem>
-              <MenuItem setActive={setActive} active={active} item="Products">
+              <MenuItem setActive={setActive} active={active} item="Blog">
                 <div className="  text-sm grid grid-cols-2 gap-10 p-4">
                   <ProductItem
                     title="Algochurn"
@@ -87,12 +87,11 @@ export default function Navbar() {
                   />
                 </div>
               </MenuItem>
-              <MenuItem setActive={setActive} active={active} item="Blog">
+              <MenuItem setActive={setActive} active={active} item="Nossa Rede">
                 <div className="flex flex-col space-y-4 text-sm">
-                  <HoveredLink href="/hobby">Hobby</HoveredLink>
-                  <HoveredLink href="/individual">Individual</HoveredLink>
-                  <HoveredLink href="/team">Team</HoveredLink>
-                  <HoveredLink href="/enterprise">Enterprise</HoveredLink>
+                  <HoveredLink href="/hobby">Linkedin</HoveredLink>
+                  <HoveredLink href="/individual">Github</HoveredLink>
+                  <HoveredLink href="/team">Instagram</HoveredLink>
                 </div>
               </MenuItem>
             </div>
