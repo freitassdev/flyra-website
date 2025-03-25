@@ -10,7 +10,7 @@ export function CardsCarousel() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const element = document.getElementById("animatedComponent");
+      const element = document.getElementById("animatedCardsComponent");
       if (element) {
         const rect = element.getBoundingClientRect();
         if (rect.top < window.innerHeight * 0.75) {
@@ -30,13 +30,13 @@ export function CardsCarousel() {
 
   return (
     <motion.div
-      id="animatedComponent"
-      initial={{ x: "80%", opacity: 0 }}
-      animate={isVisible ? { x: 0, opacity: 1 } : {}}
-      transition={{ duration: 0.5, ease: "anticipate" }}
-      className="w-full h-full py-20 z-20 flex flex-col items-center justify-center bg-background/30"
+      id="animatedCardsComponent"
+      initial={{ y: "20%", opacity: 0 }}
+      animate={isVisible ? { y: 0, opacity: 1 } : {}}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="w-full h-full py-20 flex flex-col items-center justify-center bg-background/30"
     >
-      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
+      <h2 className="max-w-7xl pl-4 mx-auto z-20 text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
         Filosofia
       </h2>
       <Carousel items={cards} />
