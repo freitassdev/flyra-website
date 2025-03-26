@@ -2,14 +2,14 @@ import { Github, Instagram, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-background w-full relative bottom-0">
-      <div className="mx-auto w-screen">
-        <div className="grid grid-cols-4 gap-8 px-8 py-6 lg:py-8 max-md:grid-cols-2">
+    <footer className="max-w-6xl border-t-2 border-t-muted mt-10 bg-background w-full mx-auto">
+      <div className="mx-auto w-full max-w-screen-xl">
+        <div className="grid grid-cols-4 gap-8 px-4 py-6 lg:py-8  max-md:grid-cols-2">
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+            <h2 className="mb-6 text-sm font-semibold uppercase text-foreground">
               Empresa
             </h2>
-            <ul className="text-gray-500 dark:text-gray-400 font-medium">
+            <ul className=" text-muted-foreground font-medium">
               <li className="mb-4">
                 <a href="#" className="hover:underline">
                   Sobre
@@ -28,10 +28,10 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+            <h2 className="mb-6 text-sm font-semibold uppercase text-foreground">
               Centro de Ajuda
             </h2>
-            <ul className="text-gray-500 dark:text-gray-400 font-medium">
+            <ul className=" text-muted-foreground font-medium">
               <li className="mb-4">
                 <a href="#" className="hover:underline">
                   Discord
@@ -55,10 +55,10 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+            <h2 className="mb-6 text-sm font-semibold uppercase text-foreground">
               Legal
             </h2>
-            <ul className="text-gray-500 dark:text-gray-400 font-medium">
+            <ul className=" text-muted-foreground font-medium">
               <li className="mb-4">
                 <a href="#" className="hover:underline">
                   Política de Privacidade
@@ -77,10 +77,10 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              Download
+            <h2 className="mb-6 text-sm font-semibold uppercase text-foreground">
+              Download dos Aplicativos
             </h2>
-            <ul className="text-gray-500 dark:text-gray-400 font-medium">
+            <ul className=" text-muted-foreground font-medium">
               <li className="mb-4">
                 <a href="#" className="hover:underline">
                   iOS
@@ -104,16 +104,13 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="px-4 py-6 bg-gray-100 dark:bg-background border-t-2 md:flex md:items-center md:justify-between">
-          <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
+        <div className="px-4 py-6 bg-gray-100 dark:bg-background border-t-2 border-t-muted md:flex md:items-center md:justify-between">
+          <span className="text-sm  dark:text-gray-300 sm:text-center">
             Copyright © 2025
             <a href="https://flyra.tech/"> Flyra Drones, Inc.</a>
           </span>
           <div className="flex items-center mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
-            <a
-              href="#"
-              className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
-            >
+            <a href="#" className="text-gray-400 hover dark:hover:text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-[22.5px] h-[22.5px]"
@@ -124,24 +121,15 @@ export default function Footer() {
               </svg>
               <span className="sr-only">Discord community</span>
             </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
-            >
+            <a href="#" className="text-gray-400 hover dark:hover:text-white">
               <Instagram className="w-5 h-5" />
               <span className="sr-only">Instagram page</span>
             </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
-            >
+            <a href="#" className="text-gray-400 hover dark:hover:text-white">
               <Twitter className="w-5 h-5" />
               <span className="sr-only">Twitter page</span>
             </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
-            >
+            <a href="#" className="text-gray-400 hover dark:hover:text-white">
               <Github className="w-5" />
               <span className="sr-only">GitHub account</span>
             </a>

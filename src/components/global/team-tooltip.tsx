@@ -1,8 +1,5 @@
-"use client";
-import React, { useEffect, useState } from "react";
 import { AnimatedTooltip } from "../ui/animated-tooltip";
 import { ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
 
 const people = [
   {
@@ -68,30 +65,9 @@ const people = [
 ];
 
 export function AnimatedTooltipPreview() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const element = document.getElementById("animatedTeamComponent");
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.75) {
-          setIsVisible(true);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <motion.div
+    <div
       id="animatedTeamComponent"
-      initial={{ y: "10%", opacity: 0 }}
-      animate={isVisible ? { y: 0, opacity: 1 } : {}}
-      transition={{ duration: 0.4, ease: "easeOut" }}
       className="h-[50vh] flex flex-col items-center justify-center gap-5 py-72"
     >
       <h1 className="text-6xl font-bold z-20">Nosso Time</h1>
@@ -101,6 +77,6 @@ export function AnimatedTooltipPreview() {
       <button className="py-4 flex justify-center items-center mt-6 gap-2 rounded text-zinc-50 font-semibold pl-4 pr-2 hover:bg-zinc-50/30 transition-all hover:translate-x-1 z-20">
         <p>Contate-nos</p> <ChevronRight />
       </button>
-    </motion.div>
+    </div>
   );
 }

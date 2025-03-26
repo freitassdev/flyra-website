@@ -4,7 +4,7 @@ import { TextAnimate } from "../magicui/text-animate";
 
 export default function AboutUsPage() {
   return (
-    <div className="w-full h-full relative bg-background bg-noise bg-fixed overflow-hidden">
+    <div className="w-screen h-full relative bg-background bg-noise bg-fixed overflow-hidden">
       <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
       <div className="flex flex-col items-center justify-center h-screen">
         <TextAnimate
