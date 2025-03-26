@@ -1,12 +1,11 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/mantine";
 import { locales } from "@blocknote/core";
 
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import Image from "next/image";
 
 import "@blocknote/core/fonts/inter.css";
 import "@blocknote/mantine/style.css";
@@ -26,7 +25,6 @@ import { CircleArrowRight, LucidePlus } from "lucide-react";
 
 export default function Editor() {
   const [html, setHtml] = useState<string>("");
-  const [tags, setTags] = useState(["Programação", "React"]);
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -84,11 +82,6 @@ export default function Editor() {
       return;
     }
 
-    if (tags.length === 0) {
-      toast.error("Adicione pelo menos uma tag.");
-      return;
-    }
-
     if (title.length < 5 || title.length > 100) {
       toast.error("O título deve ter entre 5 e 100 caracteres.");
       return;
@@ -117,7 +110,7 @@ export default function Editor() {
     }
 
     setLoading(true);
-    const res = await fetch("/api/blog/post/new", {
+    const res = await fetch("/api/posts/new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -127,7 +120,6 @@ export default function Editor() {
         content: html, //xss(html),
         imageUrl,
         simpleDescription: description,
-        tags,
       }),
     });
 
@@ -147,13 +139,6 @@ export default function Editor() {
 
     return toast.error(response.message); // caso tenha algum erro
   };
-
-  useEffect(() => {
-    if (tags.length > 8) {
-      setTags(tags.slice(0, 8));
-      toast.error("Máximo de 8 tags permitidas.");
-    }
-  }, [tags]);
 
   return (
     <div className="flex flex-col gap-3">

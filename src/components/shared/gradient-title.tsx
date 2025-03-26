@@ -11,7 +11,7 @@ export default function GradientTitle({
   return (
     <h1
       className={cn(
-        "lg:leading-[1.1] text-balance bg-gradient-to-br from-black from-25% to-white bg-clip-text py-4 text-5xl font-bold leading-none tracking-tighter text-transparent dark:from-white dark:to-black",
+        "text-balance bg-gradient-to-br from-black from-25% to-white bg-clip-text py-4 text-5xl font-bold  tracking-tighter text-transparent dark:from-white dark:to-black",
         className,
       )}
     >
