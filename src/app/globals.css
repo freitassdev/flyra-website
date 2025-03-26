@@ -1,21 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "DM Sans", serif;
+  font-optical-sizing: auto;
+}
+
+@layer base {
+    :root {
+        --background: 235 19% 11%;
+        --foreground: 229 100% 100%;
+        --muted: 235 12% 22%;
+        --muted-foreground: 235 12% 67%;
+        --popover: 235 19% 10%;
+        --popover-foreground: 229 35% 85%;
+        --card: 235 19% 17%;
+        --card-foreground: 229 35% 80%;
+        --border: 235 9% 18%;
+        --input: 235 9% 21%;
+        --primary: 219 100% 65%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 223 30% 75%;
+        --secondary-foreground: 223 30% 15%;
+        --accent: 235 19% 28%;
+        --accent-foreground: 235 19% 88%;
+        --destructive: 9 82% 45%;
+        --destructive-foreground: 0 0% 100%;
+        --ring: 219 100% 65%;
+        --chart-1: 219 100% 65%;
+        --chart-2: 223 30% 75%;
+        --chart-3: 235 19% 28%;
+        --chart-4: 223 30% 78%;
+        --chart-5: 223 48% 44%;
+        --radius: 0.8rem;
+    }
+
+    .dark {
+        --background: 235 19% 11%;
+        --foreground: 229 100% 100%;
+        --muted: 235 12% 22%;
+        --muted-foreground: 235 12% 67%;
+        --popover: 235 19% 10%;
+        --popover-foreground: 229 35% 85%;
+        --card: 235 19% 17%;
+        --card-foreground: 229 35% 80%;
+        --border: 235 9% 18%;
+        --input: 235 9% 21%;
+        --primary: 219 100% 65%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 223 30% 75%;
+        --secondary-foreground: 223 30% 15%;
+        --accent: 235 19% 28%;
+        --accent-foreground: 235 19% 88%;
+        --destructive: 9 82% 45%;
+        --destructive-foreground: 0 0% 100%;
+        --ring: 219 100% 65%;
+        --chart-1: 219 100% 65%;
+        --chart-2: 223 30% 75%;
+        --chart-3: 235 19% 28%;
+        --chart-4: 223 30% 78%;
+        --chart-5: 223 48% 44%;
+        --radius: 0.8rem;
+        --sidebar-background: 240 5.9% 10%;
+        --sidebar-foreground: 240 4.8% 95.9%;
+        --sidebar-primary: 224.3 76.3% 48%;
+        --sidebar-primary-foreground: 0 0% 100%;
+        --sidebar-accent: 240 3.7% 15.9%;
+        --sidebar-accent-foreground: 240 4.8% 95.9%;
+        --sidebar-border: 240 3.7% 15.9%;
+        --sidebar-ring: 217.2 91.2% 59.8%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply w-full h-dvh overflow-y-auto font-sans antialiased bg-background text-foreground;
+    }
+
+    #root {
+        @apply w-full h-full overflow-y-auto;
+    }
+}
+
+input::-webkit-contacts-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}
+
+input::-webkit-credentials-auto-fill-button {
+    display: none;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+input[type=password]::-ms-reveal,
+input[type=password]::-ms-clear {
+    display: none;
 }
