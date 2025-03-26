@@ -5,9 +5,10 @@ import logo from "@/assets/logos/logo-full-373x131.png";
 // import { LucideDot } from "lucide-react";
 import { Button } from "../ui/button";
 import { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/navbar-menu";
+import { HoveredLink, Menu, MenuItem } from "../ui/navbar-menu";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface INavbarItem {
   name: string;
@@ -25,7 +26,7 @@ const navbarItems: INavbarItem[] = [
   },
   {
     name: "Sobre nós",
-    link: "/about-us",
+    link: "#",
   },
 ];
 
@@ -51,40 +52,12 @@ export default function Navbar() {
                 item="Institucional"
               >
                 <div className="flex flex-col space-y-4 text-sm">
-                  <HoveredLink href="/about-us">Sobre nós</HoveredLink>
-                  <HoveredLink href="/about-us">Nossa Equipe</HoveredLink>
+                  <HoveredLink href="/about">Sobre nós</HoveredLink>
+                  <HoveredLink href="/team">Nossa Equipe</HoveredLink>
                   <HoveredLink href="/faq">
                     Perguntas Frequentes (FAQ)
                   </HoveredLink>
                   <HoveredLink href="/branding">Contato</HoveredLink>
-                </div>
-              </MenuItem>
-              <MenuItem setActive={setActive} active={active} item="Blog">
-                <div className="  text-sm grid grid-cols-2 gap-10 p-4">
-                  <ProductItem
-                    title="Algochurn"
-                    href="https://algochurn.com"
-                    src="https://assets.aceternity.com/demos/algochurn.webp"
-                    description="Prepare for tech interviews like never before."
-                  />
-                  <ProductItem
-                    title="Tailwind Master Kit"
-                    href="https://tailwindmasterkit.com"
-                    src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
-                    description="Production ready Tailwind css components for your next project"
-                  />
-                  <ProductItem
-                    title="Moonbeam"
-                    href="https://gomoonbeam.com"
-                    src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
-                    description="Never write from scratch again. Go from idea to blog in minutes."
-                  />
-                  <ProductItem
-                    title="Rogue"
-                    href="https://userogue.com"
-                    src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
-                    description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
-                  />
                 </div>
               </MenuItem>
               <MenuItem setActive={setActive} active={active} item="Nossa Rede">
@@ -94,6 +67,9 @@ export default function Navbar() {
                   <HoveredLink href="/team">Instagram</HoveredLink>
                 </div>
               </MenuItem>
+              <Link href="/blog/post/flyra-drones-inteligentes-para-combate-a-incendios-em-areas-remotas">
+                <p className="text-md">Blog</p>
+              </Link>
             </div>
             <Button className="px-6 rounded-sm">Download</Button>
           </div>
