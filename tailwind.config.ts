@@ -13,7 +13,7 @@ export default {
         "8xl": "94rem",
       },
       backgroundImage: {
-        noise: "url('/noise-dark.png')",
+        noise: 'url("/noise-dark.png")',
       },
       colors: {
         border: "hsl(var(--border))",
