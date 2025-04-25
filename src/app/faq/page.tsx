@@ -17,15 +17,19 @@ export default function FAQPage() {
       <div className="w-screen h-full relative bg-background pt-36">
         <div className="flex flex-col items-center h-full gap-6 z-20">
           <Image src={logo} width={120} alt="Flyra logo" className="z-20" />
-          <h1 className="w-1/3 text-5xl font-bold text-center z-20">
+          <h1 className="max-w-96 text-5xl font-bold text-center z-20">
             Perguntas Frequentes
           </h1>
-          <p className="w-1/3 text-lg text-center z-20">
+          <p className="max-w-96 text-lg text-center z-20">
             Aqui estão algumas perguntas frequentes sobre o nosso produto e
             serviços.
           </p>
-          <Accordion type="single" collapsible className="w-1/2 z-20">
-            <AccordionItem value="item-1">
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full max-md:px-8 md:max-w-[36rem] z-20"
+          >
+            <AccordionItem className="" value="item-1">
               <AccordionTrigger>O que é a Flyra?</AccordionTrigger>
               <AccordionContent>
                 A Flyra é um grupo focado em integrar tecnologias avançadas para

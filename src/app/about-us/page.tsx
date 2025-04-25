@@ -15,7 +15,7 @@ export default function AboutUs() {
             <div className="w-screen h-10 absolute bottom-0 bg-background/70 blur-sm" />
           </div>
           <h1 className="text-6xl font-bold z-20">História</h1>
-          <p className="w-1/3 text-lg text-justify z-20">
+          <p className="w-full text-lg text-justify z-20 max-w-2xl px-8">
             A Flyra nasceu com o objetivo de integrar tecnologia avançada para
             solucionar problemas ambientais em áreas verdes e urbanas. Nosso
             projeto surgiu da preocupação com a degradação ambiental e a

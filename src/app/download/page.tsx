@@ -13,18 +13,18 @@ export default function DownloadPage() {
         <div className="absolute inset-0 bg-primary/30 bg-[size:20px_20px] opacity-20 blur-[100px] top-0 z-0" />
         <div className="flex flex-col items-center justify-center h-screen gap-6 z-20">
           <Image src={logo} width={120} alt="Flyra logo" />
-          <h1 className="w-1/3 text-5xl font-bold text-center z-20">
+          <h1 className="max-w-[32rem] px-3 text-4xl md:text-5xl font-bold text-center z-20">
             Venha fazer parte de um futuro mais seguro e sustentável!
           </h1>
           <Button className="p-5 z-20">
             <DownloadIcon /> Download para Windows
           </Button>
           <div className="flex flex-row w-1/2 items-center justify-center gap-4 mt-4">
-            <div className="w-1/3 h-[1px] bg-foreground/30" />
-            <span className="text-foreground/80 text-center">
+            <div className="w-1/2 md:w-1/3 h-px bg-foreground/30" />
+            <span className="text-foreground/80 text-center text-sm md:text-base">
               Também disponível para
             </span>
-            <div className="w-1/3 h-[1px] bg-foreground/30" />
+            <div className="w-1/2 md:w-1/3 h-px bg-foreground/30" />
           </div>
           <div className="flex flex-row gap-8 mt-4">
             <div className="flex flex-col gap-2">

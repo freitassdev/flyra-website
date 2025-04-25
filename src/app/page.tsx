@@ -15,7 +15,7 @@ export default function Home() {
             <LucideSparkles className="text-foreground size-4" />
             Faça o download do nosso aplicativo!
           </HoverBorderGradient>
-          <div className="flex flex-col font-bold text-6xl">
+          <div className="flex flex-col font-bold max-sm:text-xl max-md:text-3xl md:text-5xl lg:text-6xl">
             <div className="flex flex-row gap-2">
               <h1>Inteligência artificial que</h1>
               <WordRotate
@@ -25,7 +25,7 @@ export default function Home() {
             </div>
             <h1>do céu à terra.</h1>
           </div>
-          <p className="max-w-2xl">
+          <p className="max-w-2xl text-xs sm:text-sm md:text-base">
             A Flyra é um projeto de TCC que desenvolve{" "}
             <span className="text-primary">
               drones com inteligência artificial
