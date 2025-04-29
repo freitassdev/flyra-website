@@ -5,6 +5,7 @@ import {
 } from "@/services/queries/auth/reset-password/reset-password.query";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 const useResetPassword = () => {
@@ -15,17 +16,18 @@ const useResetPassword = () => {
   >({
     mutationFn: resetPassword,
     onSuccess: (data) => {
-      if (data.error) {
+      if (data.message) {
         toast.error(data.message);
         return;
       }
-      if (data.success) {
-        toast.success(
-          "Senha redefinida com sucesso! Faça login com sua nova senha",
-        );
+      if (data.statusCode !== 200 && data.statusCode !== 201) {
+        toast.error("Falha ao redefinir sua senha");
         return;
       }
-      toast.error("Falha ao redefinir sua senha");
+
+      toast.success(
+        "Senha redefinida com sucesso! Faça login com sua nova senha",
+      );
     },
     onError: (error) => {
       if (
@@ -44,13 +46,13 @@ const useResetPassword = () => {
 
   const handleResetPassword = async ({
     code,
-    newPassword,
+    password,
   }: {
     code: string;
-    newPassword: string;
+    password: string;
   }) => {
     return new Promise<void>(() => {
-      mutate({ code, newPassword });
+      mutate({ code, password });
     });
   };
 

@@ -25,22 +25,25 @@ const usePasswordLogin = () => {
     mutationKey: ["login-with-password"],
     mutationFn: login,
     onSuccess: (data) => {
-      if (data.error) {
+      if (data.message) {
         toast.error(data.message);
         return;
       }
-      if (!data.success) {
+
+      if (data.statusCode !== 200 && data.statusCode !== 201) {
         toast.error("Falha ao realizar login");
         return;
       }
-      if (data.token && data.user) {
+
+      if (data.data.token && data.data.user) {
         setUser({
-          ...data.user,
-          token: data.token,
+          ...data.data.user,
+          token: data.data.token,
         });
-        setItem("auth-token", data.token);
+        setItem("auth-token", data.data.token);
         return;
       }
+
       return toast.error("Ocorreu um erro ao fazer login");
     },
     onError: (error) => {
@@ -65,11 +68,11 @@ const usePasswordLogin = () => {
       mutationKey: ["reset-password"],
       mutationFn: sendResetPasswordEmail,
       onSuccess: (data) => {
-        if (data.error) {
+        if (data.message) {
           toast.error(data.message);
           return;
         }
-        if (!data.success) {
+        if (data.statusCode !== 200 && data.statusCode !== 201) {
           toast.error("Falha ao enviar e-mail de recuperação de senha");
           return;
         }
@@ -96,8 +99,8 @@ const usePasswordLogin = () => {
     mutate({ email, password });
   };
 
-  const resetPassword = async (email: string) => {
-    resetPasswordMutate({ email });
+  const resetPassword = async (email: string, type: "set" | "reset") => {
+    resetPasswordMutate({ email, type });
   };
   return {
     isLoadingLogin: isPending,

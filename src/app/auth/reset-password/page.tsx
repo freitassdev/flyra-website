@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 export default function ResetPage() {
   return (
-    <div className="w-full h-screen justify-center items-center text-card-foreground overflow-hidden relative">
+    <div className="w-full h-screen text-card-foreground overflow-hidden relative">
       <AnimatePresence mode="wait">
         <motion.div
           key="login-form"
@@ -13,7 +13,7 @@ export default function ResetPage() {
           initial={{ opacity: 0, x: "-100%", filter: "blur(10px)" }}
           animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.3 }}
-          className="absolute w-full h-full flex flex-col justify-center"
+          className="absolute w-full h-full"
         >
           <ResetPasswordForm />
         </motion.div>

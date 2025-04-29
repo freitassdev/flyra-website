@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import logoFlyraMini from "@/assets/logos/logo-mini-80x80.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 import useResetPassword from "@/hooks/auth/reset-password/useResetPassword";
 import LoadingCircleSpinner from "../shared/loader";
 import { useQueryState } from "nuqs";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Eye, EyeOff } from "lucide-react";
 
 export default function ResetPasswordForm() {
   const {
@@ -30,8 +30,11 @@ export default function ResetPasswordForm() {
   });
 
   const [code] = useQueryState("code");
+  const [type] = useQueryState("type");
 
   const { handleResetPassword, isLoading } = useResetPassword();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const watchConfirmNewPassword = watch("confirmNewPassword");
 
@@ -47,10 +50,10 @@ export default function ResetPasswordForm() {
 
     await handleResetPassword({
       code,
-      newPassword: watchConfirmNewPassword,
+      password: watchConfirmNewPassword,
     })
       .then(() => {
-        router.push("/auth/login");
+        router.push("/");
       })
       .catch(() => {
         toast.error("Ocorreu um erro ao redefinir sua senha");
@@ -67,8 +70,12 @@ export default function ResetPasswordForm() {
     return;
   };
 
+  const handleShowPassword = (): void => {
+    setShowPassword(!showPassword);
+  };
+
   useEffect(() => {
-    if (!code) {
+    if (!code || (type !== "set" && type !== "reset")) {
       toast.error("Código de recuperação inválido");
       router.push("/auth/login");
       return;
@@ -77,37 +84,50 @@ export default function ResetPasswordForm() {
 
   return (
     <form
-      className="w-full h-screen flex flex-col mt-[4vh]"
+      className="w-full h-full flex flex-col items-center justify-center -mt-16"
       onSubmit={handleSubmit(onSubmit, onError)}
     >
       <div className="flex flex-col gap-2 items-center">
         <Image className="size-20" src={logoFlyraMini} alt="Flyra Logo" />
         <h1 className="text-3xl text-center font-bold text-foreground">
-          Redefinir senha
+          {type === "reset" ? "Redefinir senha" : "Definir senha"}
         </h1>
       </div>
       <div className="w-full flex flex-col gap-2 items-center">
         <div className="w-1/6 flex flex-col gap-3 py-6">
-          <div className="flex flex-col gap-2 w-full">
+          <div className="flex flex-col w-full">
             <Label
               htmlFor="newPassword"
               className="absolute -mt-[0.40rem] ml-3 bg-background text-zinc-300"
             >
-              Nova senha
+              {type === "reset" ? "Nova senha" : "Senha"}
             </Label>
             <Input
               className="h-10"
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="newPassword"
               {...register("newPassword")}
             />
+            {showPassword ? (
+              <Eye
+                className="relative bottom-8 left-44 -mb-4 cursor-pointer"
+                size={22}
+                onClick={handleShowPassword}
+              />
+            ) : (
+              <EyeOff
+                className="relative bottom-8 left-44 -mb-4 cursor-pointer"
+                size={22}
+                onClick={handleShowPassword}
+              />
+            )}
           </div>
           <div className="flex flex-col gap-2 w-full">
             <Label
               htmlFor="confirmNewPassword"
               className="absolute -mt-[0.40rem] ml-3 bg-background text-zinc-300"
             >
-              Confimar nova senha
+              {type === "reset" ? "Confirmar nova senha" : "Confirmar senha"}
             </Label>
             <Input
               className="h-10"

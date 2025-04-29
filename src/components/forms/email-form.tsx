@@ -81,7 +81,7 @@ export default function EmailForm({
     sendOtpLoginEmail(watchEmail, true);
   };
 
-  const handlePasswordReset = async (): Promise<void> => {
+  const handleResetPassword = async (): Promise<void> => {
     if (!watchEmail) {
       toast.error(
         "Por favor, preencha o campo de email para redefinir sua senha.",
@@ -96,7 +96,25 @@ export default function EmailForm({
       return;
     }
 
-    await resetPassword(watchEmail);
+    await resetPassword(watchEmail, "reset");
+  };
+
+  const handleSetPassword = async (): Promise<void> => {
+    if (!watchEmail) {
+      toast.error(
+        "Por favor, preencha o campo de email para redefinir sua senha.",
+      );
+      return;
+    }
+
+    const emailValidation = z.string().email().safeParse(watchEmail);
+
+    if (!emailValidation.success) {
+      toast.error("Por favor, insira um email válido.");
+      return;
+    }
+
+    await resetPassword(watchEmail, "set");
   };
 
   useEffect(() => {
@@ -158,12 +176,21 @@ export default function EmailForm({
               onClick={handleShowPassword}
             />
           )}
-          <p
-            className="text-sm text-muted-foreground cursor-pointer -mt-9 hover:underline hover:text-primary"
-            onClick={handlePasswordReset}
-          >
-            Esqueceu sua senha ou ainda não tem uma?
-          </p>
+          <div className="flex gap-1 -mt-9">
+            <p
+              className="text-sm text-primary/75 cursor-pointer hover:underline hover:text-primary"
+              onClick={handleResetPassword}
+            >
+              Esqueceu sua senha
+            </p>
+            <p className="text-sm text-muted-foreground">ou</p>
+            <p
+              className="text-sm text-primary/75 cursor-pointer hover:underline hover:text-primary"
+              onClick={handleSetPassword}
+            >
+              ainda não tem uma?
+            </p>
+          </div>
         </div>
       </div>
       <Button
