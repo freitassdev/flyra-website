@@ -51,13 +51,8 @@ export default function ResetPasswordForm() {
     await handleResetPassword({
       code,
       password: watchConfirmNewPassword,
-    })
-      .then(() => {
-        router.push("/");
-      })
-      .catch(() => {
-        toast.error("Ocorreu um erro ao redefinir sua senha");
-      });
+    });
+    router.push("/auth/login");
   };
 
   const onError = (errors: FieldErrors<TResetPassword>): void => {
@@ -94,7 +89,7 @@ export default function ResetPasswordForm() {
         </h1>
       </div>
       <div className="w-full flex flex-col gap-2 items-center">
-        <div className="w-1/6 flex flex-col gap-3 py-6">
+        <div className="flex w-80 flex-col gap-3 py-6">
           <div className="flex flex-col w-full">
             <Label
               htmlFor="newPassword"
@@ -110,13 +105,13 @@ export default function ResetPasswordForm() {
             />
             {showPassword ? (
               <Eye
-                className="relative bottom-8 left-44 -mb-4 cursor-pointer"
+                className="relative bottom-8 left-72 -mb-4 cursor-pointer"
                 size={22}
                 onClick={handleShowPassword}
               />
             ) : (
               <EyeOff
-                className="relative bottom-8 left-44 -mb-4 cursor-pointer"
+                className="relative bottom-8 left-72 -mb-4 cursor-pointer"
                 size={22}
                 onClick={handleShowPassword}
               />

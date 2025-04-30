@@ -5,7 +5,6 @@ import {
 } from "@/services/queries/auth/reset-password/reset-password.query";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 const useResetPassword = () => {
