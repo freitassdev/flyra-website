@@ -3,7 +3,7 @@ import { IApiResponse } from "@/constants/types";
 
 export interface IResetPassword {
   code: string;
-  newPassword: string;
+  password: string;
 }
 
 export interface IResetPasswordInput {
@@ -15,11 +15,11 @@ export type TResetPasswordResponse = IApiResponse;
 
 export const resetPassword = async ({
   code,
-  newPassword,
+  password,
 }: IResetPassword): Promise<TResetPasswordResponse> => {
   const { data } = await axios.post<TResetPasswordResponse>(
-    "/auth/resetPassword",
-    { code, newPassword },
+    "api/auth/reset-password",
+    { code, password },
   );
   return data;
 };

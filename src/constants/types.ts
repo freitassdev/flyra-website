@@ -1,6 +1,6 @@
 export interface IApiResponse {
-  message: string;
-  success: boolean;
-  error?: string;
-  statusCode?: number;
+  data: any & { success: boolean; message: string };
+  message?: string;
+  statusCode: number;
+  statusMessage: string;
 }
