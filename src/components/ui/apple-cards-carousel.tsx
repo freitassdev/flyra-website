@@ -93,7 +93,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
 export const Card = ({ card, isActive }: { card: Card; isActive: boolean }) => {
   return (
-    <motion.div className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative transition-all duration-300 hover:scale-105">
+    <motion.div className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-96 w-80 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative transition-all duration-300 hover:scale-105">
       <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
       <div className="relative z-40 p-8">
         <motion.p className="text-white text-sm md:text-base font-medium">
