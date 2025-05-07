@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import logoFlyraMini from "@/assets/logos/logo-mini-80x80.png";
+import logoFlyraMini from "@/assets/logos/logo-mini-260x260.png";
 import { useEffect, useState } from "react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
@@ -139,7 +139,7 @@ export default function ResetPasswordForm() {
             {!isLoading ? "Enviar" : <LoadingCircleSpinner />}
           </Button>
           <Button
-            variant={"secondary"}
+            variant={"card"}
             className="h-11 text-foreground relative flex flex-row items-center w-full"
             type="button"
             onClick={() => {
