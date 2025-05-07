@@ -20,7 +20,9 @@ export default function Navbar() {
         <div className={cn("fixed top-5 inset-x-0 max-w-6xl mx-auto z-50")}>
           <Menu setActive={setActive}>
             <div className="w-full flex flex-row justify-between items-center px-4">
-              <Image src={logo} alt="logo" className="w-auto" height={30} />
+              <Link href={"/"} className="flex flex-row items-center">
+                <Image src={logo} alt="logo" className="w-auto" height={40} />
+              </Link>
               <div className="md:hidden">
                 <button onClick={() => setMobileOpen(!mobileOpen)}>
                   <MenuIcon size={24} />

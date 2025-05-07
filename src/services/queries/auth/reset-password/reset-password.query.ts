@@ -18,7 +18,7 @@ export const resetPassword = async ({
   password,
 }: IResetPassword): Promise<TResetPasswordResponse> => {
   const { data } = await axios.post<TResetPasswordResponse>(
-    "api/auth/reset-password",
+    "auth/reset-password",
     { code, password },
   );
   return data;
