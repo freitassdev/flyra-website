@@ -35,7 +35,6 @@ export default function Navbar() {
                   >
                     <div className="flex flex-col space-y-4 text-sm">
                       <HoveredLink href="/about-us">Sobre nós</HoveredLink>
-                      <HoveredLink href="/team">Nossa Equipe</HoveredLink>
                       <HoveredLink href="/faq">
                         Perguntas Frequentes (FAQ)
                       </HoveredLink>
