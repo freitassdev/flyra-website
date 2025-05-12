@@ -4,6 +4,8 @@ import Navbar from "@/components/shared/navbar";
 import { WordRotate } from "@/components/home/word-rotate";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { LucideSparkles } from "lucide-react";
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="w-full h-full max-w-[100vw] relative">
@@ -11,10 +13,12 @@ export default function Home() {
       <Spotlight />
       <div className="flex flex-col items-center justify-center gap-4 w-full h-[100dvh]">
         <div className="flex flex-col items-center text-center gap-4">
-          <HoverBorderGradient className="flex flex-row gap-2 justify-center items-center">
-            <LucideSparkles className="text-foreground size-4" />
-            Faça o download do nosso aplicativo!
-          </HoverBorderGradient>
+          <Link href="/download">
+            <HoverBorderGradient className="flex flex-row gap-2 justify-center items-center">
+              <LucideSparkles className="text-foreground size-4" />
+              Faça o download do nosso aplicativo!
+            </HoverBorderGradient>
+          </Link>
           <div className="flex flex-col font-bold max-sm:text-xl max-md:text-3xl md:text-5xl lg:text-6xl">
             <div className="flex flex-row gap-2">
               <h1>Inteligência artificial que</h1>
