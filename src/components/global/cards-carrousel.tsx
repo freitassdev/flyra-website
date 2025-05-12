@@ -9,9 +9,9 @@ export function CardsCarousel() {
   return (
     <div
       id="animatedCardsComponent"
-      className="w-full h-full py-20 flex flex-col items-center justify-center"
+      className="w-full h-full py-20 flex flex-col items-center justify-center bg-background z-40"
     >
-      <h2 className="mx-auto text-5xl font-bold text-foreground">Filosofia</h2>
+      <h2 className="text-6xl font-bold text-foreground z-40">Filosofia</h2>
       <Carousel items={cards} />
     </div>
   );
