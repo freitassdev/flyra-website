@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import logoFlyraMini from "@/assets/logos/logo-mini-260x260.png";
+import logoFlyraMini from "@/assets/logos/logo-mini-80x80.png";
 import { useEffect, useState } from "react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
@@ -15,7 +15,7 @@ import { FieldErrors, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import useResetPassword from "@/hooks/auth/reset-password/useResetPassword";
-import LoadingCircleSpinner from "../ui/loader";
+import LoadingCircleSpinner from "../shared/loader";
 import { useQueryState } from "nuqs";
 import { ChevronLeft, Eye, EyeOff } from "lucide-react";
 
@@ -23,7 +23,6 @@ export default function ResetPasswordForm() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<TResetPassword>({
     resolver: zodResolver(ResetPasswordSchema),
@@ -36,11 +35,9 @@ export default function ResetPasswordForm() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const watchConfirmNewPassword = watch("confirmNewPassword");
-
   const router = useRouter();
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: TResetPassword) => {
     if (errors.root) {
       toast.error(errors.root.message);
       return;
@@ -50,9 +47,9 @@ export default function ResetPasswordForm() {
 
     await handleResetPassword({
       code,
-      password: watchConfirmNewPassword,
+      password: data.confirmNewPassword,
     });
-    router.push("/");
+    router.push("/auth/login");
   };
 
   const onError = (errors: FieldErrors<TResetPassword>): void => {
@@ -70,12 +67,13 @@ export default function ResetPasswordForm() {
   };
 
   useEffect(() => {
+    if (typeof code === "undefined" || typeof type === "undefined") return;
+
     if (!code || (type !== "set" && type !== "reset")) {
       toast.error("Código de recuperação inválido");
       router.push("/");
-      return;
     }
-  }, [router, code]);
+  }, [router, code, type]);
 
   return (
     <form
@@ -139,7 +137,7 @@ export default function ResetPasswordForm() {
             {!isLoading ? "Enviar" : <LoadingCircleSpinner />}
           </Button>
           <Button
-            variant={"card"}
+            variant={"secondary"}
             className="h-11 text-foreground relative flex flex-row items-center w-full"
             type="button"
             onClick={() => {
