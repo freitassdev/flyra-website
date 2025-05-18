@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import logo from "@/assets/logos/logo-mini-260x260.png";
 import { Monitor, Smartphone, Download as DownloadIcon } from "lucide-react";
+import { Safari } from "@/components/magicui/safari";
+import Iphone15Pro from "@/components/magicui/iphone-15-pro";
+import { TextShadow } from "@/components/shared/text-shadow";
 
 export default function DownloadPage() {
   return (
@@ -11,11 +14,13 @@ export default function DownloadPage() {
       <Navbar />
       <div className="w-screen h-full relative bg-background overflow-hidden">
         <div className="absolute inset-0 bg-primary/30 bg-[size:20px_20px] opacity-20 blur-[100px] top-0 z-0" />
-        <div className="flex flex-col items-center justify-center h-screen gap-6 z-20">
+        <div className="w-full flex flex-col items-center justify-center h-screen gap-6 z-20 lg:w-3/4">
           <Image src={logo} width={120} alt="Flyra logo" />
-          <h1 className="max-w-[32rem] px-3 text-4xl md:text-5xl font-bold text-center z-20">
-            Venha fazer parte de um futuro mais seguro e sustentável!
-          </h1>
+          <TextShadow>
+            <h1 className="max-w-[32rem] px-3 text-4xl md:text-5xl font-bold text-center z-20">
+              Venha fazer parte de um futuro mais seguro e sustentável!
+            </h1>
+          </TextShadow>
           <Button className="p-5 z-20">
             <DownloadIcon /> Download para Windows
           </Button>
@@ -49,6 +54,19 @@ export default function DownloadPage() {
                 Mac OS
               </Button>
             </div>
+          </div>
+        </div>
+        <div className="absolute w-1/3 h-screen top-0 right-10 z-10 max-lg:hidden">
+          <div className="absolute top-1/2 transform -translate-y-1/2">
+            <Safari
+              url="flyra.tech"
+              className="relative h-72 w-fit"
+              videoSrc="https://res.cloudinary.com/dtvc1ejqk/video/upload/v1747398500/desktop-flyra-video_cnawdq.mp4"
+            />
+            <Iphone15Pro
+              className="relative h-52 w-fit bottom-52 left-96"
+              src="https://res.cloudinary.com/dtvc1ejqk/image/upload/v1747399321/mobile-flyra-print_zsu3fv.png"
+            />
           </div>
         </div>
       </div>
