@@ -102,7 +102,6 @@ export default function Navbar() {
               <p className="text-sm text-foreground/70 mt-2">Institucional</p>
               <Separator />
               <Link href="/about-us">Sobre nós</Link>
-              <Link href="/team">Nossa Equipe</Link>
               <Link href="/faq">Perguntas Frequentes (FAQ)</Link>
               <Link href="/contact">Contato</Link>
               <p className="text-sm text-foreground/70 mt-2">Nossa Rede</p>
