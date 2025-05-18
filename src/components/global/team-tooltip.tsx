@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AnimatedTooltip } from "../ui/animated-tooltip";
 import { ChevronRight } from "lucide-react";
+import { TextShadow } from "../shared/text-shadow";
 
 const people = [
   {
@@ -75,7 +76,9 @@ export function AnimatedTooltipPreview() {
         <div className="absolute z-0 bottom-0 left-[-20%] right-0 top-[20%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(77,139,255,.15),rgba(255,255,255,0))]" />
         <div className="absolute z-0 bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(77,139,255,.15),rgba(255,255,255,0))]" />
       </div>
-      <h1 className="text-6xl font-bold z-20">Nosso Time</h1>
+      <TextShadow>
+        <h1 className="text-6xl font-bold z-20">Nosso Time</h1>
+      </TextShadow>
       <div className="flex flex-row items-center justify-center w-full PX-3">
         <AnimatedTooltip items={people} />
       </div>

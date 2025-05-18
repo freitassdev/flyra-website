@@ -1,5 +1,6 @@
 import React from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
+import { TextShadow } from "@/components/shared/text-shadow";
 
 export function CardsCarousel() {
   const cards = data.map((card) => (
@@ -11,7 +12,9 @@ export function CardsCarousel() {
       id="animatedCardsComponent"
       className="w-full h-full py-20 flex flex-col items-center justify-center bg-background z-40"
     >
-      <h2 className="text-6xl font-bold text-foreground z-40">Filosofia</h2>
+      <TextShadow className="flex flex-col items-center justify-center">
+        Identidade e Compromisso
+      </TextShadow>
       <Carousel items={cards} />
     </div>
   );
@@ -36,7 +39,6 @@ const data = [
     category: "Flyra",
     title: "Nossos Valores",
     content: [
-      "Inovação: Investimos constantemente em pesquisa e desenvolvimento para aprimorar nossas soluções.\n",
       "Sustentabilidade: Nosso compromisso é com a preservação do meio ambiente e a redução dos impactos ambientais.\n",
       "Eficiência: Criamos ferramentas de monitoramento rápidas e precisas para garantir respostas ágeis.\n",
       "Acessibilidade: Desenvolvemos tecnologias acessíveis para que mais instituições possam utilizá-las sem necessidade de infraestrutura complexa.",
