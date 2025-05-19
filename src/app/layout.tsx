@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`h-dvh overflow-y-scroll w-full antialiased`}>
+      <body className={`h-dvh w-full antialiased`}>
         <Providers>
           <UserStoreProvider>
             <ThemeProvider
