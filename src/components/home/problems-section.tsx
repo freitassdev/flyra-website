@@ -2,6 +2,7 @@ import { Cctv, HandCoins, SatelliteDish } from "lucide-react";
 import Image from "next/image";
 import FlyraImage from "@/assets/images/flyra-with-florest.png";
 import { BoxAnimate } from "@/components/shared/box-animate";
+import { TextShadow } from "../shared/text-shadow";
 
 const limitations = [
   {
@@ -32,9 +33,9 @@ export default function ProblemsSection() {
           <div className="w-full flex justify-center">
             <Image src={FlyraImage} className="max-w-96 max-lg:w-64" alt="" />
           </div>
-          <h2 className="text-5xl font-bold mb-4 px-3 max-sm:text-3xl max-lg:text-4xl">
+          <TextShadow className="text-5xl font-bold mb-4 px-3 max-sm:text-3xl max-lg:text-4xl">
             O meio ambiente está em risco
-          </h2>
+          </TextShadow>
           <p className="text-lg mb-10 max-w-3xl mx-auto px-4 max-sm:text-sm max-lg:text-base">
             Desastres florestais comprometem ecossistemas inteiros. As
             tecnologias atuais ainda têm limitações que impedem uma resposta
