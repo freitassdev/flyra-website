@@ -5,13 +5,16 @@ import { WordRotate } from "@/components/home/word-rotate";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { LucideSparkles } from "lucide-react";
 import Link from "next/link";
+import ProblemsSection from "@/components/home/problems-section";
+import Image from "next/image";
+import ScrollAnimate from "@/assets/images/scroll-animate.gif";
 
 export default function Home() {
   return (
     <div className="w-full h-full max-w-[100vw] relative">
       <Navbar />
       <Spotlight />
-      <div className="flex flex-col items-center justify-center gap-4 w-full h-[100dvh]">
+      <div className="flex flex-col items-center justify-center gap-4 w-full h-screen">
         <div className="flex flex-col items-center text-center gap-4">
           <Link href="/download">
             <HoverBorderGradient className="flex flex-row gap-2 justify-center items-center">
@@ -40,7 +43,11 @@ export default function Home() {
             <span className="text-primary">proteger o meio ambiente</span>.
           </p>
         </div>
+        <div className="relative w-8 top-32">
+          <Image src={ScrollAnimate} alt="" className=""></Image>
+        </div>
       </div>
+      <ProblemsSection />
       <Footer />
     </div>
   );
