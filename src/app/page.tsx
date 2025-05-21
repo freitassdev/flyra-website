@@ -8,6 +8,8 @@ import Link from "next/link";
 import ProblemsSection from "@/components/home/problems-section";
 import Image from "next/image";
 import ScrollAnimate from "@/assets/images/scroll-animate.gif";
+import { Button } from "@/components/ui/button";
+import SolutionSection from "@/components/home/solution-section";
 
 export default function Home() {
   return (
@@ -48,6 +50,30 @@ export default function Home() {
         </div>
       </div>
       <ProblemsSection />
+      <SolutionSection />
+      <section className="container mx-auto px-4 py-20">
+        <div className="bg-primary/10 p-12 rounded-xl text-center">
+          <h2 className="text-3xl font-bold mb-6">
+            Pronto para proteger o meio ambiente?
+          </h2>
+          <p className="text-gray-300 max-w-2xl mx-auto mb-8">
+            Junte-se a nós nessa missão de utilizar tecnologia avançada para
+            proteger nossas florestas e áreas verdes. Faça o download do nosso
+            aplicativo ou entre em contato para saber mais.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              variant="secondary"
+              className="h-full px-8 py-3 rounded-full"
+            >
+              <Link href="/download">Download</Link>
+            </Button>
+            <Button variant="outline" className="h-full px-8 py-3">
+              <Link href="/contact">Entre em contato</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
       <Footer />
     </div>
   );
