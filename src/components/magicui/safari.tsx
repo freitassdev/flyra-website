@@ -1,11 +1,15 @@
+"use client";
+
 import { SVGProps } from "react";
+// import { useEffect } from "react";
 
 type SafariMode = "default" | "simple";
 
 export interface SafariProps extends SVGProps<SVGSVGElement> {
   url?: string;
   imageSrc?: string;
-  videoSrc?: string;
+  videoSrcMp4?: string;
+  videoSrcWebm?: string;
   width?: number;
   height?: number;
   mode?: SafariMode;
@@ -13,13 +17,24 @@ export interface SafariProps extends SVGProps<SVGSVGElement> {
 
 export function Safari({
   imageSrc,
-  videoSrc,
+  videoSrcMp4,
+  videoSrcWebm,
   url,
   width = 1203,
   height = 753,
   mode = "default",
   ...props
 }: SafariProps) {
+  const isSafari = () => {
+    const ua = navigator.userAgent;
+    return (
+      ua.includes("Safari") &&
+      !ua.includes("Chrome") &&
+      !ua.includes("Chromium") &&
+      !ua.includes("Android")
+    );
+  };
+
   return (
     <svg
       width={width}
@@ -148,7 +163,7 @@ export function Safari({
             clipPath="url(#roundedBottom)"
           />
         )}
-        {videoSrc && (
+        {!isSafari() && (
           <foreignObject
             x="1"
             y="52"
@@ -158,13 +173,15 @@ export function Safari({
             clipPath="url(#roundedBottom)"
           >
             <video
-              className="size-full overflow-hidden object-cover"
-              src={videoSrc}
+              className="size-full overflow-hidden object-cover box-border"
               autoPlay
               loop
               muted
               playsInline
-            />
+            >
+              <source src={videoSrcMp4} type="video/mp4" />
+              <source src={videoSrcWebm} type="video/webm" />
+            </video>
           </foreignObject>
         )}
       </g>

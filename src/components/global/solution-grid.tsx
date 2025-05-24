@@ -42,7 +42,9 @@ export default function SolutionGrid() {
                 <Safari
                   url="flyra.tech"
                   className="relative w-full h-full"
-                  videoSrc="https://res.cloudinary.com/dtvc1ejqk/video/upload/v1747398500/desktop-flyra-video_cnawdq.mp4"
+                  videoSrcMp4="https://res.cloudinary.com/dtvc1ejqk/video/upload/v1747398500/desktop-flyra-video_cnawdq.mp4"
+                  videoSrcWebm="https://res.cloudinary.com/dtvc1ejqk/video/upload/v1748121878/desktop-flyra-video_cnawdq_muekjh.webm"
+                  imageSrc="https://res.cloudinary.com/dtvc1ejqk/image/upload/v1748126083/flyra-desktop_bbdkwn.png"
                 />
               </div>
             }
